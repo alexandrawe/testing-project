@@ -2,18 +2,22 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
-class Book extends Model
+class Author extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function path()
+    protected $dates = [
+        'dob',
+    ];
+
+    public function setDobAttribute($dob)
     {
-        return '/books/' . $this->id;
+        $this->attributes['dob'] = Carbon::parse($dob);
     }
 }
