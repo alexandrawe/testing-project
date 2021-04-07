@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,9 @@ Route::get('/', function () {
 Route::get('/feedback', function () {
     return "You've been clicked, punk.";
 });
+
+Route::post('/books', [BooksController::class, 'store']);
+Route::patch('/books/{book}', [BooksController::class, 'update']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
