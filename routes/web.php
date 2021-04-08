@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\CheckinBookController;
+use App\Http\Controllers\CheckoutBookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,9 @@ Route::delete('/books/{book}', [BooksController::class, 'destroy']);
 Route::post('/authors', [AuthorsController::class, 'store']);
 Route::patch('/authors/{author}', [AuthorsController::class, 'update']);
 Route::delete('/authors/{author}', [AuthorsController::class, 'destroy']);
+
+Route::post('checkout/{book}', [CheckoutBookController::class, 'store']);
+Route::post('checkin/{book}', [CheckinBookController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
